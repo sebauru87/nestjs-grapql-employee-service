@@ -1,9 +1,16 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Employee } from 'src/employee/entities/employee.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 
 @ObjectType()
 @Entity()
+@Unique(['code'])
 export class Project {
   @Field()
   @PrimaryGeneratedColumn('uuid')
@@ -14,7 +21,7 @@ export class Project {
   name: string;
 
   @Field(() => Int)
-  @Column()
+  @Column({ unique: true })
   code: number;
 
   @OneToMany(() => Employee, (employee) => employee.project)
