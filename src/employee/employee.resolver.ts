@@ -7,7 +7,7 @@ import {
   Parent,
 } from '@nestjs/graphql';
 // import { identity } from 'rxjs';
-import { Project } from 'src/project/entities/project.entity';
+import { Project } from '../project/entities/project.entity';
 import { EmployeeCreateDTO } from './dto/create-employee.input';
 import { EmployeeService } from './employee.service';
 import { Employee } from './entities/employee.entity';

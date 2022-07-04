@@ -7,34 +7,37 @@ var dbConfig = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: false,
+  // entities: ['dist/**/*.entity{.ts,.js}'],
+  // entities: ['**/*.entity{.ts,.js}'],
+  // entities: ['**/*.entity.js'],
+  // entities: [__dirname + '/**/*.entity{.ts,.js}'],
+  synchronize: true,
   migrations: ['migrations/*.js'],
   cli: {
     migrationsDir: 'migrations',
   },
 };
 
-// switch (process.env.NODE_ENV) {
-//   case 'development':
-//     Object.assign(dbConfig, {
-//       type: 'sqlite',
-//       database: 'db.sqlite',
-//       entities: ['**/*.entity.js'],
-//     });
-//     break;
-//   case 'test':
-//     Object.assign(dbConfig, {
-//       type: 'sqlite',
-//       database: 'test.sqlite',
-//       entities: ['**/*.entity.ts'],
-//       migrationsRun: true,
-//     });
-//     break;
-//   case 'production':
-//     break;
-//   default:
-//     throw new Error('unknown environment');
-// }
+switch (process.env.NODE_ENV) {
+  case 'development':
+    Object.assign(dbConfig, {
+      // type: 'sqlite',
+      // database: 'db.sqlite',
+      entities: ['**/*.entity.js'],
+    });
+    break;
+  case 'test':
+    Object.assign(dbConfig, {
+      // type: 'sqlite',
+      // database: 'test.sqlite',
+      entities: ['**/*.entity.ts'],
+      // migrationsRun: true,
+    });
+    break;
+  case 'production':
+    break;
+  default:
+    throw new Error('unknown environment');
+}
 
 module.exports = dbConfig;

@@ -75,6 +75,8 @@ Nest is [MIT licensed](LICENSE).
 # Docker
 -create container 
 docker run -d -p 5444:5432 --name my-postgres-book-nestjs -e POSTGRES_PASSWORD postgres
+docker run --name postgres-db-employee -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+
 
 # Migrations
 - npm run typeorm2 migration:create -- -n initial-migra -o
